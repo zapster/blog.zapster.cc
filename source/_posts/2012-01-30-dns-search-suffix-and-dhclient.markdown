@@ -7,15 +7,34 @@ published: false
 categories: [linux, dns, dhcp, dhclient, /etc/resolv.conf]
 ---
 
-`append domain-search "zapster.cc", "tuwien.ac.at";`
+A long time I did not really care about DNS search suffixes. Suddenly,
+a few months ago, I realized that it would be nice if I could use the same
+URL (bookmarks, etc.) to reach my laptop, no matter which local network I am currently
+using. 
+
+This was the time when I read about [resolv.conf(5)][] for the first time. But
+editing your `/etc/resolv.conf` and using DHCP is often not a good idea because it
+might get overwritten. Fortunately most open router operation systems support `dnsmasq` 
+which is capable of providing IP addresses and supporting local DNS resolution. 
+
+Anyway, sometimes adding a DNS search suffix only to your local computer is just what you need.
+In this case [dhclient.conf(5)][] might become handy.
+
+```
+append domain-search "example.com", "sales.example.com";
+```
+
+The line above adds two suffixes to the DNS resolution list so instead of `ssh www.example.com`
+one only need to type `ssh www`. The manual page for [dhcp-options(5)][] lists other 
+useful options with can be used to configure the DHCP client.
 
 References:
 -----------
 
-* [USG:NC][]: Ubuntu Server Guide &rarr; Network Configuration
-* [man dhclient.conf(5)][]: `dhclient.conf` manual page
-* [man dhcp-options(5)][]: `dhcp-options` manual page
+* [resolv.conf(5)][]: manual page
+* [dhclient.conf(5)][]: manual page
+* [dhcp-options(5)][]: manual page
 
-[USG:NC]: https://help.ubuntu.com/11.10/serverguide/C/network-configuration.html 
-[man dhclient.conf(5)]: http://manpages.ubuntu.com/manpages/lucid/en/man5/dhclient.conf.5.html
-[man dhcp-options(5)]: http://manpages.ubuntu.com/manpages/lucid/en/man5/dhcp-options.5.html
+[resolv.conf(5)]: http://linux.die.net/man/5/resolv.conf 
+[dhclient.conf(5)]: http://linux.die.net/man/5/dhclient.conf
+[dhcp-options(5)]: http://linux.die.net/man/5/dhcp-options
