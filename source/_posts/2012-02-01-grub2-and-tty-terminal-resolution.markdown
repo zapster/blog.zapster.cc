@@ -4,7 +4,11 @@ title: "Grub2 and tty terminal resolution"
 date: 2012-02-01 14:59
 comments: true
 published: false
-categories: ['grub2', 'tty', 'linux', 'ubuntu', 'terminal']
+categories:
+- grub2
+- linux
+- tty
+- ubuntu
 ---
 * `/etc/default/grub`
 * `/etc/grub.d/`
