@@ -12,10 +12,12 @@ categories:
 - linux
 ---
 
-A long time I did not really care about DNS search suffixes. Suddenly,
+For a long time I did not really care about DNS search suffixes. Suddenly,
 a few months ago, I realized that it would be nice if I could use the same
 URL (bookmarks, etc.) to reach my laptop, no matter which local network I am currently
 using. 
+
+<!-- more -->
 
 I was aware that I can use [resolv.conf(5)][] but
 editing your `/etc/resolv.conf` and using DHCP is often not a good idea because it
