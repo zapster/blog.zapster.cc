@@ -1,0 +1,46 @@
+---
+layout: post
+title: "await - relay race for your shell"
+date: 2012-12-05 19:30
+comments: true
+published: false
+categories:
+- linux
+- bash
+- tools
+---
+
+await is a command-line tool to make the execution of several command temporal
+dependant. 
+
+USAGE
+=====
+
+```
+await <name> cmd arg0 arg1 ...
+```
+
+await holds execution of `cmd arg0 agr1 ...` until all processes started in the
+same group (`<name>`) are finished.
+
+Example
+=======
+
+Consider the following commands on different shell instances (in a temporal
+order):
+
+```
+shell1> await w1 longrun1 arg10 arg11 arg12 ...
+...
+shell2> await w1 longrun2 arg20 arg21 arg22 ...
+...
+shell3> await w1 longrun3 arg30 arg31 arg32 ...
+```
+
+The programm `longrun1` will start immediately. After the termination of
+`longrun1` the `longrun2` is issued and so on.
+
+More info
+---------
+
+- [await on github](https://github.com/zapster/await)
