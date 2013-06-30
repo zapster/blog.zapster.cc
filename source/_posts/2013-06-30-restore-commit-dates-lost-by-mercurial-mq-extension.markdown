@@ -37,18 +37,18 @@ adding the command line flag `-D/--currentdate` to the `hg qnew` and `hg qrecord
 commands (or even create an alias). There is still another problem with `qrefresh`
 as it refreshes not only the patch but the also the date.
 [This FAQ entry](http://mercurial.selenic.com/wiki/MqExtension#Prevent_qrefresh_from_updating_timestamps)
-on the MQ Extension page provides a solution to this issue.
+on the MQ Extension page provides a solution to the issue.
 
-But this all those not bring back date information for old patches. In my case a
+But it those not bring back date information for old patches. In my case a
 few months and ~230 patches worth of date information.
 
 Solution
 --------
 
 Fortunately not everything was lost. I put my patches under version control right from
-the beginning. The `hg commit -mq` makes this really convenient.
-I used to make at least one commit a day so for each patch file the date of its
-creation is stored in the queue repository. The `hg log` command together with
+the beginning (the `hg commit -mq` command makes it really convenient.).
+I to commit my changes at least once a day. Therefor, the creation date of each
+patch file is stored in the queue repository. The `hg log` command together with
 some [revset magic][revsets] reveals the information:
 
 ```
