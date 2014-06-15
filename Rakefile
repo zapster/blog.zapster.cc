@@ -6,7 +6,6 @@ require "stringex"
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
 ssh_user       = "zapster@zapster.cc"
 ssh_port       = "22"
-<<<<<<< HEAD
 document_root  = "~/subdomains/blog/httpdocs"
 rsync_delete   = true
 rsync_args     = ""  # Any extra arguments to pass to rsync
