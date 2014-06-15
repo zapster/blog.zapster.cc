@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bcache on a Fedora 20 install"
+title: "Install Fedora 20 on a bcache device"
 date: 2014-06-15 13:45
 comments: true
 published: false
@@ -12,8 +12,14 @@ categories:
 - Dell XSP 15 9530
 ---
 
-http://forums.fedoraforum.org/showpost.php?p=1681469&postcount=1
-** begin quote **
+[Fedora forum](http://forums.fedoraforum.org) user [l3iggs](http://forums.fedoraforum.org/member.php?u=204744)
+posted a very interesting description entitled [HowTo: use bcache on a fresh F20 install](http://forums.fedoraforum.org/showpost.php?p=1681469&postcount=1)
+on installing Fedora 20 directly on a bcache device.
+
+I want keep this copy around together with some personal notes. All kudos to the original author!
+
+*** BEGIN QUOTE ***
+
 Hello Fedora people.
 
 bcache is cool. It's a recent (3.10) addition to the Linux kernel that allows you to use a ssd to cache reads and writes to/from your hdd in hopes of getting better I/O performance than you'd get from a hdd alone.
@@ -43,17 +49,23 @@ You should assume that following this guide will leave you with only zeros in al
     sudo gparted
 
 Then use gparted to:
+
 - Create a new gpt partition table for `/dev/sda` (msdos works too but it's old and may cause problems later)
 - Make a new partition: `/dev/sda1` cleared, 2MiB, bios_grub flag set (this is needed to boot with BIOS from gpt disks)
 - Make a new partition: `/dev/sda2` ext4, 512MiB (this will be your /boot partition)
 - Make a new partition: `/dev/sda3` swap
 - Make a new partition: `/dev/sda4` cleared (this will be part of your bcache)
+
 You should figure out the proper sizes for `/dev/sda3` and `/dev/sda4` yourself
+
 ## Step #5: Repartition your SSD.
 Still using gparted:
+
 - Create a new gpt partition table for `/dev/sdb` (msdos works too but it's old and may cause problems later)
 - Make a new partition: `/dev/sdb1` cleared (this will be part of your bcache)
+
 I recommend that if your ssd is larger than 64 GB you make `/dev/sdb1` only 64 GB in size (making it bigger is probably a waste). You can use the rest of your ssd for someting else more useful.
+
 ## Step #5.1: Remove any existing file systems on the targets.
 In case you're not following this guide exactly and you have junk left over in your target partitions from something else, clean them up like this. You shouldn't need to do this if you just made them "unformatted" as described in steps 4 and 5 above
 
@@ -124,4 +136,5 @@ Note you can get various performance stats on your bcache like this
 Thanks to emesix for the great chroot idea.
 
 Good luck!
-** end quote **
+
+*** END QUOTE ***
