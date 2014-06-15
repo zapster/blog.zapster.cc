@@ -30,3 +30,26 @@ categories:
 ## Other
 
 - [Phoronix thread about HiDPI](http://www.phoronix.com/forums/showthread.php?95685-GNOME-Shell-Lands-High-DPI-Support)
+
+
+# logs
+
+Output of `xdpyinfo` (wrong DPI and physical size):
+
+    screen #0:
+      dimensions:    3200x1800 pixels (846x476 millimeters)
+      resolution:    96x96 dots per inch
+
+Output of  `xrandr` (correct physical size):
+
+    Screen 0: minimum 320 x 200, current 3200 x 1800, maximum 8192 x 8192
+    eDP1 connected primary 3200x1800+0+0 (normal left inverted right x axis y axis) 346mm x 194mm
+
+Xorg log `/var/log/Xorg.0.log`:
+
+    [    16.236] (==) intel(0): DPI set to (96, 96)
+    [    16.237] (==) NOUVEAU(G0): DPI set to (96, 96)
+
+# code
+
+{% include_code lang:bash 90-monitor.conf %}
