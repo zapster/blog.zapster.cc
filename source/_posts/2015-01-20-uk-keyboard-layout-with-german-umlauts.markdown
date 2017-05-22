@@ -3,7 +3,7 @@ layout: post
 title: "UK keyboard layout with German umlauts"
 date: 2015-01-20 09:41
 comments: true
-published: false
+published: true
 categories:
 - linux
 - X11
