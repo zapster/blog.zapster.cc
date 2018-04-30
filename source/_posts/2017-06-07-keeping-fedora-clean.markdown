@@ -17,9 +17,36 @@ Auxiliary files can account for a lot of space in a long running Linux installat
 [StackExchange answer][journalctl-disk-usage] proposing `journalctl --disk-usage`.
 [StackExchange answer][journalctl] on cleaning `journalctl` logs.
 
+> Retain only the past two days:
+
+    journalctl --vacuum-time=2d
+
+> Retain only the past 500 MB:
+
+    journalctl --vacuum-size=500M
+
 ### Cleaning `PackageKit` cache
 
 [StackExchange answer][PackageKit] on cleaning `PackageKit` cache.
+
+> You can get rid of these files using PackageKit console client `pkcon`
+
+<!-- language: lang-sh -->
+
+    $ sudo pkcon refresh force -c -1
+
+> It takes some time but is provided by PackageKit itself. (and you may set a cron job for it)
+>
+> from the man page of [pkcon(1)](https://www.mankier.com/1/pkcon)
+
+       refresh [force]
+           Refresh the cached information about available updates.
+> and
+
+       -c, --cache-age AGE
+           Set the maximum acceptable age for cached metadata, in seconds. Use -1 for 'never'.
+
+> So this tells PackageKit to delete cached information (refresh cached information with maximum acceptable age of : never)
 
 ### Pruning `docker` images
 
