@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: https://blog.zapster.cc
+url: https://zapster.github.io/blog.zapster.cc
 title: blog.zapster.cc
 subtitle: "random notes..."
 #subtitle: "random [computer [science]] notes..."
@@ -18,7 +18,7 @@ description:
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
+subscribe_rss: /blog.zapster.cc/atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:
@@ -28,7 +28,7 @@ email:
 # ----------------------- #
 
 # If publishing to a subdirectory as in http://site.com/project set 'root: /project'
-root: /
+root: /blog.zapster.cc
 permalink: /blog/:year/:month/:day/:title/
 source: source
 destination: public
