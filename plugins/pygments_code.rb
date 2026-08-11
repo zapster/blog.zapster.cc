@@ -11,8 +11,12 @@ module HighlightCode
     lang = 'objc' if lang == 'm'
     lang = 'perl' if lang == 'pl'
     lang = 'yaml' if lang == 'yml'
-    lang = 'sh' if lang == 'bash'
-    str = pygments(str, lang).match(/<pre>(.+)<\/pre>/m)[1].to_s.gsub(/ *$/, '') #strip out divs <div class="highlight">
+    begin
+      str = pygments(str, lang).match(/<pre>(.+)<\/pre>/m)[1].to_s.gsub(/ *$/, '') #strip out divs <div class="highlight">
+    rescue MentosError
+      # Keep the site buildable when the legacy Pygments runtime lacks a lexer.
+      str = str.gsub('&', '&amp;').gsub('<', '&lt;').gsub('>', '&gt;')
+    end
     tableize_code(str, lang)
   end
 
