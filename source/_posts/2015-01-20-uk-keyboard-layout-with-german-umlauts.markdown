@@ -9,6 +9,7 @@ categories:
 - X11
 - XKB
 ---
+> **Update (2024):** I now use `altgr-weur`, which is shipped with most Linux distributions. I have also switched to the US keyboard layout, mainly because US keyboards are more widely available.
 <!-- more -->
 
 Add to `/usr/share/X11/xkb/symbols/gb`:
