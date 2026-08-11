@@ -3,7 +3,7 @@ layout: post
 title: "Keeping Fedora Clean"
 date: 2017-06-07 11:40:36 +0200
 comments: true
-published: false
+published: true
 categories: fedora linux
 ---
 
